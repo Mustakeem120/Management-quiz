@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Practice Quiz (200 MCQs)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            700: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.5);
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(107, 114, 128, 0.8);
+        }
+    </style>
+</head>
+<body class="h-full bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-200">
+    
+    <div id="app" class="min-h-screen flex flex-col justify-between">
+        <!-- Header -->
+        <header class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-30 transition-colors duration-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="goToHome()">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-lg leading-tight tracking-tight text-slate-900 dark:text-white">Management Quiz</h1>
+                        <p class="text-xs text-brand-600 dark:text-brand-400 font-semibold">200 MCQ Masterclass</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-3">
+                    <button id="themeToggle" onclick="toggleTheme()" class="p-2.5 rounded-lg text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700/60 transition">
+                        <i id="themeIcon" class="fa-solid fa-moon text-lg"></i>
+                    </button>
+                    <div class="hidden sm:block text-right border-l border-slate-200 dark:border-slate-700 pl-4">
+                        <p class="text-xs text-slate-400 dark:text-slate-500">Author</p>
+                        <p class="text-xs font-bold text-slate-700 dark:text-slate-300">Created by M Mirza</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            
+            <!-- VIEW 1: HOME / COVER PAGE -->
+            <section id="viewHome" class="space-y-8 max-w-4xl mx-auto py-4">
+                <!-- Hero Header -->
+                <div class="text-center space-y-4">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
+                        <i class="fa-solid fa-certificate"></i> Comprehensive Practice Exam
+                    </span>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                        Management Practice Quiz <span class="text-brand-600 dark:text-brand-400">(200 MCQs)</span>
+                    </h1>
+                    <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+                        Test your foundational and advanced knowledge of management principles, organizational behavior, managerial functions, and leadership theories.
+                    </p>
+                    <div class="inline-block bg-slate-200/70 dark:bg-slate-800/80 px-4 py-1.5 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700">
+                        <i class="fa-solid fa-user-pen text-brand-500 mr-1.5"></i> Created by M Mirza
+                    </div>
+                </div>
+
+                <!-- Quiz Mode Config Card -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl border border-slate-200 dark:border-slate-700/80 space-y-6">
+                    <h2 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-sliders text-brand-500"></i> Configure Quiz Session
+                    </h2>
+
+                    <!-- Category / Section Select -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Select Quiz Scope:</label>
+                        <select id="sectionSelect" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl p-3 text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm font-medium">
+                            <option value="ALL">Complete Quiz (All 200 Questions)</option>
+                            <option value="1">Section 1: Basic Concepts of Management (Q1 - Q20)</option>
+                            <option value="2">Section 2: Levels of Management (Q21 - Q35)</option>
+                            <option value="3">Section 3: Management Functions (Q36 - Q55)</option>
+                            <option value="4">Section 4: Mintzberg's Managerial Roles (Q56 - Q85)</option>
+                            <option value="5">Section 5: Organizations & Managerial Skills (Q86 - Q105)</option>
+                            <option value="6">Section 6: Changing Manager's Job & Importance (Q106 - Q120)</option>
+                            <option value="7">Section 7: Scientific Management - Taylor (Q121 - Q140)</option>
+                            <option value="8">Section 8: Management as Art and Science (Q141 - Q155)</option>
+                            <option value="9">Section 9: Fayol's 14 Principles of Management (Q156 - Q185)</option>
+                            <option value="10">Section 10: Behavioral Theory, Theory X & Y (Q186 - Q200)</option>
+                        </select>
+                    </div>
+
+                    <!-- Feedback Mode Toggle -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <label class="flex items-start p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 cursor-pointer hover:border-brand-500 transition">
+                            <input type="radio" name="feedbackMode" value="immediate" checked class="mt-1 text-brand-600 focus:ring-brand-500">
+                            <div class="ml-3">
+                                <span class="block text-sm font-bold text-slate-800 dark:text-slate-200">Instant Feedback Mode</span>
+                                <span class="block text-xs text-slate-500 dark:text-slate-400 mt-0.5">Show correct/incorrect answer immediately upon choosing an option. Best for learning.</span>
+                            </div>
+                        </label>
+                        <label class="flex items-start p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 cursor-pointer hover:border-brand-500 transition">
+                            <input type="radio" name="feedbackMode" value="exam" class="mt-1 text-brand-600 focus:ring-brand-500">
+                            <div class="ml-3">
+                                <span class="block text-sm font-bold text-slate-800 dark:text-slate-200">Exam Mode</span>
+                                <span class="block text-xs text-slate-500 dark:text-slate-400 mt-0.5">No answers shown until final submission. Simulates real exam environment.</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="pt-2">
+                        <button onclick="startQuiz()" class="w-full bg-brand-600 hover:bg-brand-700 active:scale-[0.99] text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-brand-600/30 transition flex items-center justify-center space-x-2 text-base">
+                            <span>Start Quiz Session</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Features Highlight Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/60 flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-circle-check text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Verified Answer Key</h3>
+                            <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">100% Accurate Key</p>
+                        </div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/60 flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-bookmark text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Review & Nav</h3>
+                            <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Flag & Quick Grid Jump</p>
+                        </div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/60 flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-chart-pie text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Analytics</h3>
+                            <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Percentage & Review</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 2: QUIZ INTERFACE -->
+            <section id="viewQuiz" class="hidden space-y-6">
+                <!-- Top Progress Bar Container -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-700/80 space-y-3">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div class="flex items-center space-x-2">
+                            <span id="quizCategoryBadge" class="bg-brand-50 text-brand-700 dark:bg-brand-900/50 dark:text-brand-300 text-xs font-semibold px-2.5 py-1 rounded-md border border-brand-200 dark:border-brand-800">
+                                Section 1
+                            </span>
+                            <span class="text-slate-400 dark:text-slate-500 text-xs">•</span>
+                            <span id="questionCounter" class="text-xs font-bold text-slate-600 dark:text-slate-300">
+                                Question 1 of 200
+                            </span>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3">
+                            <!-- Instant Score Preview -->
+                            <div class="text-xs font-medium text-slate-500 dark:text-slate-400">
+                                Current Score: <span id="currentScorePreview" class="font-bold text-slate-800 dark:text-white">0</span>
+                            </div>
+                            <!-- Drawer Toggle Button -->
+                            <button onclick="toggleNavigator()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-th"></i>
+                                <span>Question Grid</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-slate-100 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
+                        <div id="progressBar" class="bg-brand-600 h-full w-0 transition-all duration-300 rounded-full"></div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                    <!-- Main Question Box -->
+                    <div class="lg:col-span-3 space-y-4">
+                        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 sm:p-8 shadow-md border border-slate-200 dark:border-slate-700 space-y-6">
+                            
+                            <!-- Question Header & Text -->
+                            <div class="flex items-start justify-between gap-4">
+                                <div class="space-y-2">
+                                    <span id="qNumberText" class="text-xs font-bold text-brand-600 dark:text-brand-400 tracking-wider uppercase">Question #1</span>
+                                    <h2 id="qText" class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed">
+                                        Loading question text...
+                                    </h2>
+                                </div>
+                                <button id="bookmarkBtn" onclick="toggleBookmark()" class="shrink-0 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-400 hover:text-amber-500 dark:hover:text-amber-400 hover:bg-slate-50 dark:hover:bg-slate-700 transition" title="Bookmark / Flag Question">
+                                    <i class="fa-regular fa-bookmark text-lg"></i>
+                                </button>
+                            </div>
+
+                            <!-- Options List -->
+                            <div id="optionsContainer" class="space-y-3">
+                                <!-- Options rendered via JS -->
+                            </div>
+
+                            <!-- Explanation/Feedback Alert (in immediate mode) -->
+                            <div id="feedbackAlert" class="hidden p-4 rounded-xl border text-sm font-medium"></div>
+
+                        </div>
+
+                        <!-- Action Bar -->
+                        <div class="flex items-center justify-between bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                            <button id="prevBtn" onclick="prevQuestion()" class="px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2">
+                                <i class="fa-solid fa-chevron-left text-xs"></i> Previous
+                            </button>
+
+                            <div class="flex items-center gap-2">
+                                <button id="nextBtn" onclick="nextQuestion()" class="px-5 py-2 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-sm transition flex items-center gap-2">
+                                    Next <i class="fa-solid fa-chevron-right text-xs"></i>
+                                </button>
+                                <button id="submitQuizBtn" onclick="confirmSubmitQuiz()" class="px-5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm shadow-sm transition flex items-center gap-2">
+                                    <i class="fa-solid fa-paper-plane text-xs"></i> Finish & Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Grid Navigator (Desktop View / Collapsible Drawer) -->
+                    <div id="navigatorContainer" class="bg-white dark:bg-slate-800 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 shadow-md h-fit space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-2">
+                                <i class="fa-solid fa-grip text-brand-500"></i> Navigator
+                            </h3>
+                            <span class="text-xs text-slate-400 dark:text-slate-500 font-mono" id="navSummaryText">0/200</span>
+                        </div>
+
+                        <!-- Legend -->
+                        <div class="grid grid-cols-2 gap-2 text-[11px] font-medium pt-1 border-t border-slate-100 dark:border-slate-700/60">
+                            <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-brand-500"></span> Answered</div>
+                            <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Flagged</div>
+                            <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-200 dark:bg-slate-700"></span> Unvisited</div>
+                            <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span> Skipped</div>
+                        </div>
+
+                        <!-- Grid -->
+                        <div id="questionGrid" class="grid grid-cols-5 gap-1.5 max-h-[380px] overflow-y-auto custom-scrollbar p-1">
+                            <!-- Question pills generated via JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 3: RESULTS SCREEN -->
+            <section id="viewResults" class="hidden space-y-8 max-w-4xl mx-auto py-4">
+                <!-- Header Score Card -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl border border-slate-200 dark:border-slate-700 text-center space-y-6">
+                    <div class="space-y-2">
+                        <span id="resultBadge" class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">
+                            Assessment Completed
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Your Quiz Results</h2>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Management Practice Quiz • Created by M Mirza</p>
+                    </div>
+
+                    <!-- Main Score Circular/Large Display -->
+                    <div class="flex flex-col items-center justify-center space-y-2">
+                        <div class="text-5xl sm:text-6xl font-black text-brand-600 dark:text-brand-400 tracking-tight" id="resPercentage">
+                            0.0%
+                        </div>
+                        <p class="text-sm font-semibold text-slate-600 dark:text-slate-300" id="resScoreText">
+                            You scored 0 out of 200 questions
+                        </p>
+                        <div id="resPerformanceRating" class="text-base font-bold text-emerald-600 dark:text-emerald-400 pt-1">
+                            Outstanding Performance!
+                        </div>
+                    </div>
+
+                    <!-- Breakdown Stats Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-100 dark:border-slate-700/60">
+                        <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/50">
+                            <p class="text-[11px] font-bold text-slate-400 uppercase">Total Items</p>
+                            <p id="resTotal" class="text-lg font-bold text-slate-800 dark:text-slate-100">0</p>
+                        </div>
+                        <div class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/40">
+                            <p class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 uppercase">Correct</p>
+                            <p id="resCorrect" class="text-lg font-bold text-emerald-700 dark:text-emerald-300">0</p>
+                        </div>
+                        <div class="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800/40">
+                            <p class="text-[11px] font-bold text-rose-600 dark:text-rose-400 uppercase">Incorrect</p>
+                            <p id="resIncorrect" class="text-lg font-bold text-rose-700 dark:text-rose-300">0</p>
+                        </div>
+                        <div class="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/40">
+                            <p class="text-[11px] font-bold text-amber-600 dark:text-amber-400 uppercase">Skipped</p>
+                            <p id="resSkipped" class="text-lg font-bold text-amber-700 dark:text-amber-300">0</p>
+                        </div>
+                    </div>
+
+                    <!-- Action buttons -->
+                    <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+                        <button onclick="retakeCurrentQuiz()" class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm shadow-md transition flex items-center gap-2">
+                            <i class="fa-solid fa-rotate-right"></i> Retake Quiz
+                        </button>
+                        <button onclick="goToHome()" class="px-5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 font-bold text-sm transition flex items-center gap-2">
+                            <i class="fa-solid fa-house"></i> Home Screen
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Detailed Answer Key Breakdown -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 sm:p-8 shadow-lg border border-slate-200 dark:border-slate-700 space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700/60 pb-4">
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Detailed Answer Review</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Review your responses against official answers</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <select id="reviewFilter" onchange="filterReviewList()" class="text-xs bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200 border-none rounded-lg p-2 font-semibold">
+                                <option value="all">All Questions</option>
+                                <option value="incorrect">Incorrect Only</option>
+                                <option value="correct">Correct Only</option>
+                                <option value="skipped">Skipped Only</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="reviewContainer" class="space-y-4 max-h-[600px] overflow-y-auto custom-scrollbar pr-2">
+                        <!-- Review items populated dynamically -->
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 py-4 transition-colors duration-200">
+            <div class="max-w-7xl mx-auto px-4 text-center space-y-1">
+                <p class="text-xs font-semibold text-slate-600 dark:text-slate-400">
+                    Management Practice Quiz System • 200 Comprehensive MCQs
+                </p>
+                <p class="text-[11px] text-slate-400 dark:text-slate-500">
+                    Created by <span class="font-bold text-slate-700 dark:text-slate-300">M Mirza</span> | Designed for Academic & Professional Excellence
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- SCRIPT DATA & QUIZ LOGIC -->
+    <script>
+        // -------------------------------------------------------------
+        // COMPLETE DATASET: ALL 200 MANAGEMENT MCQS & EXACT ANSWER KEY
+        // -------------------------------------------------------------
+        const rawAnswers = {
+            1:'B', 2:'C', 3:'A', 4:'B', 5:'C', 6:'B', 7:'A', 8:'C', 9:'B', 10:'C',
+            11:'B', 12:'C', 13:'A', 14:'B', 15:'A', 16:'B', 17:'A', 18:'B', 19:'A', 20:'B',
+            21:'B', 22:'C', 23:'A', 24:'B', 25:'C', 26:'C', 27:'B', 28:'C', 29:'B', 30:'A',
+            31:'C', 32:'A', 33:'A', 34:'B', 35:'B', 36:'A', 37:'B', 38:'A', 39:'B', 40:'B',
+            41:'C', 42:'A', 43:'A', 44:'A', 45:'B', 46:'A', 47:'A', 48:'B', 49:'B', 50:'C',
+            51:'A', 52:'A', 53:'A', 54:'A', 55:'D', 56:'A', 57:'C', 58:'B', 59:'C', 60:'A',
+            61:'A', 62:'A', 63:'C', 64:'A', 65:'A', 66:'A', 67:'A', 68:'C', 69:'A', 70:'A',
+            71:'A', 72:'C', 73:'A', 74:'A', 75:'A', 76:'A', 77:'A', 78:'A', 79:'B', 80:'C',
+            81:'B', 82:'B', 83:'C', 84:'A', 85:'B', 86:'B', 87:'D', 88:'A', 89:'D', 90:'B',
+            91:'A', 92:'A', 93:'A', 94:'A', 95:'B', 96:'A', 97:'C', 98:'A', 99:'A', 100:'A',
+            101:'B', 102:'B', 103:'C', 104:'A', 105:'B', 106:'A', 107:'A', 108:'A', 109:'A', 110:'A',
+            111:'A', 112:'A', 113:'A', 114:'A', 115:'A', 116:'A', 117:'B', 118:'A', 119:'A', 120:'A',
+            121:'B', 122:'A', 123:'B', 124:'B', 125:'B', 126:'B', 127:'B', 128:'A', 129:'C', 130:'D',
+            131:'A', 132:'A', 133:'A', 134:'A', 135:'A', 136:'A', 137:'A', 138:'A', 139:'A', 140:'A',
+            141:'A', 142:'A', 143:'A', 144:'D', 145:'A', 146:'A', 147:'A', 148:'A', 149:'A', 150:'A',
+            151:'A', 152:'A', 153:'A', 154:'A', 155:'A', 156:'B', 157:'C', 158:'A', 159:'A', 160:'A',
+            161:'A', 162:'A', 163:'A', 164:'A', 165:'A', 166:'A', 167:'A', 168:'A', 169:'A', 170:'A',
+            171:'A', 172:'A', 173:'A', 174:'A', 175:'A', 176:'A', 177:'A', 178:'A', 179:'A', 180:'A',
+            181:'A', 182:'A', 183:'A', 184:'A', 185:'A', 186:'A', 187:'A', 188:'B', 189:'D', 190:'C',
+            191:'C', 192:'A', 193:'A', 194:'A', 195:'B', 196:'D', 197:'B', 198:'A', 199:'B', 200:'A'
+        };
+
+        const questionsData = [
+            // SECTION 1
+            { id: 1, section: 1, sectionTitle: "Basic Concepts of Management", q: "What is management?", options: ["Doing all work alone", "Coordinating and overseeing others' work activities", "Only making money", "Avoiding responsibility"] },
+            { id: 2, section: 1, sectionTitle: "Basic Concepts of Management", q: "Efficiency means?", options: ["Doing the right things", "Achieving goals at any cost", "Doing things right with minimum resources", "Increasing employees"] },
+            { id: 3, section: 1, sectionTitle: "Basic Concepts of Management", q: "Effectiveness means?", options: ["Doing the right things to achieve goals", "Using fewer employees", "Reducing all expenses", "Working without planning"] },
+            { id: 4, section: 1, sectionTitle: "Basic Concepts of Management", q: "Which concept focuses on minimum input and maximum output?", options: ["Effectiveness", "Efficiency", "Leadership", "Innovation"] },
+            { id: 5, section: 1, sectionTitle: "Basic Concepts of Management", q: "Which concept focuses on achieving organizational goals?", options: ["Efficiency", "Discipline", "Effectiveness", "Authority"] },
+            { id: 6, section: 1, sectionTitle: "Basic Concepts of Management", q: "A company produces more products using fewer resources. This is an example of?", options: ["Effectiveness", "Efficiency", "Authority", "Centralization"] },
+            { id: 7, section: 1, sectionTitle: "Basic Concepts of Management", q: "A manager chooses the correct business goals and achieves them. This represents?", options: ["Effectiveness", "Efficiency", "Discipline", "Unity of command"] },
+            { id: 8, section: 1, sectionTitle: "Basic Concepts of Management", q: "Management involves coordinating the work of?", options: ["Only top managers", "Only customers", "Other people", "Competitors"] },
+            { id: 9, section: 1, sectionTitle: "Basic Concepts of Management", q: "Who is responsible for achieving organizational goals through other people?", options: ["Customer", "Manager", "Supplier", "Competitor"] },
+            { id: 10, section: 1, sectionTitle: "Basic Concepts of Management", q: "Which combination best describes good management?", options: ["Efficiency only", "Effectiveness only", "Efficiency and effectiveness", "Neither"] },
+            { id: 11, section: 1, sectionTitle: "Basic Concepts of Management", q: "Doing things right is called?", options: ["Effectiveness", "Efficiency", "Innovation", "Planning"] },
+            { id: 12, section: 1, sectionTitle: "Basic Concepts of Management", q: "Doing the right things is called?", options: ["Efficiency", "Discipline", "Effectiveness", "Authority"] },
+            { id: 13, section: 1, sectionTitle: "Basic Concepts of Management", q: "A manager reduces unnecessary costs while maintaining output. This shows?", options: ["Efficiency", "Effectiveness", "Unity of command", "Initiative"] },
+            { id: 14, section: 1, sectionTitle: "Basic Concepts of Management", q: "An organization achieves its main objectives. This shows?", options: ["Efficiency", "Effectiveness", "Centralization", "Order"] },
+            { id: 15, section: 1, sectionTitle: "Basic Concepts of Management", q: "Management is mainly concerned with?", options: ["Coordinating work activities", "Avoiding employees", "Stopping organizational activities", "Working without objectives"] },
+            { id: 16, section: 1, sectionTitle: "Basic Concepts of Management", q: "Which is an important purpose of management?", options: ["Creating confusion", "Achieving organizational goals", "Increasing waste", "Avoiding coordination"] },
+            { id: 17, section: 1, sectionTitle: "Basic Concepts of Management", q: "If a manager achieves goals but wastes many resources, the manager is?", options: ["Effective but not efficient", "Efficient but not effective", "Neither", "Both efficient and ineffective"] },
+            { id: 18, section: 1, sectionTitle: "Basic Concepts of Management", q: "If a manager uses fewer resources but fails to achieve goals, the manager is?", options: ["Effective but not efficient", "Efficient but not effective", "Both", "Neither"] },
+            { id: 19, section: 1, sectionTitle: "Basic Concepts of Management", q: "Management is needed to?", options: ["Coordinate people's work", "Eliminate goals", "Stop communication", "Avoid responsibility"] },
+            { id: 20, section: 1, sectionTitle: "Basic Concepts of Management", q: "Which statement is correct?", options: ["Efficiency and effectiveness are identical", "Efficiency focuses on resources; effectiveness focuses on goals", "Effectiveness focuses only on cost", "Efficiency means goals only"] },
+
+            // SECTION 2
+            { id: 21, section: 2, sectionTitle: "Levels of Management", q: "How many basic levels of management are discussed?", options: ["Two", "Three", "Four", "Five"] },
+            { id: 22, section: 2, sectionTitle: "Levels of Management", q: "First-line managers directly manage?", options: ["Top managers", "Middle managers", "Non-managerial employees", "Shareholders"] },
+            { id: 23, section: 2, sectionTitle: "Levels of Management", q: "Middle managers generally manage?", options: ["First-line managers", "Customers", "Suppliers", "Only top managers"] },
+            { id: 24, section: 2, sectionTitle: "Levels of Management", q: "Top managers are responsible for?", options: ["Only daily employee tasks", "Organization-wide decisions", "Machine maintenance", "Only complaints"] },
+            { id: 25, section: 2, sectionTitle: "Levels of Management", q: "Who sets organizational goals and plans at the highest level?", options: ["First-line manager", "Middle manager", "Top manager", "Employee"] },
+            { id: 26, section: 2, sectionTitle: "Levels of Management", q: "A supervisor managing workers on a production floor is an example of?", options: ["Top manager", "Middle manager", "First-line manager", "Customer"] },
+            { id: 27, section: 2, sectionTitle: "Levels of Management", q: "A department manager who manages supervisors is generally a?", options: ["First-line manager", "Middle manager", "Non-managerial employee", "Customer"] },
+            { id: 28, section: 2, sectionTitle: "Levels of Management", q: "Which management level makes organization-wide decisions?", options: ["First-line", "Middle", "Top", "Operational employee"] },
+            { id: 29, section: 2, sectionTitle: "Levels of Management", q: "Which manager is closest to non-managerial employees?", options: ["Top manager", "First-line manager", "Board member", "Chief executive"] },
+            { id: 30, section: 2, sectionTitle: "Levels of Management", q: "The main responsibility of middle managers is to?", options: ["Manage first-line managers", "Manage only customers", "Set national laws", "Avoid planning"] },
+            { id: 31, section: 2, sectionTitle: "Levels of Management", q: "Which level is at the highest position in an organization?", options: ["First-line management", "Middle management", "Top management", "Operational staff"] },
+            { id: 32, section: 2, sectionTitle: "Levels of Management", q: "A factory supervisor is most likely a?", options: ["First-line manager", "Top manager", "Middle manager", "Shareholder"] },
+            { id: 33, section: 2, sectionTitle: "Levels of Management", q: "Which level connects top management plans with lower-level activities?", options: ["Middle management", "Customers", "Suppliers", "Competitors"] },
+            { id: 34, section: 2, sectionTitle: "Levels of Management", q: "Who is mainly responsible for daily supervision of employees?", options: ["Top manager", "First-line manager", "Shareholder", "Customer"] },
+            { id: 35, section: 2, sectionTitle: "Levels of Management", q: "Which statement about top managers is correct?", options: ["They manage only one worker", "They make organization-wide decisions", "They never plan", "They only handle routine tasks"] },
+
+            // SECTION 3
+            { id: 36, section: 3, sectionTitle: "Management Functions", q: "Which approach explains management through its functions?", options: ["Functions approach", "Behavioral approach", "Scientific approach", "Human relations approach"] },
+            { id: 37, section: 3, sectionTitle: "Management Functions", q: "Which function involves deciding in advance what to do?", options: ["Controlling", "Planning", "Leading", "Monitoring"] },
+            { id: 38, section: 3, sectionTitle: "Management Functions", q: "Planning involves?", options: ["Setting goals and deciding how to achieve them", "Punishing employees", "Avoiding objectives", "Ignoring future activities"] },
+            { id: 39, section: 3, sectionTitle: "Management Functions", q: "Which function focuses on guiding and motivating employees?", options: ["Planning", "Leading", "Controlling", "Organizing"] },
+            { id: 40, section: 3, sectionTitle: "Management Functions", q: "A manager motivates employees to complete their work. This is?", options: ["Planning", "Leading", "Controlling", "Budgeting"] },
+            { id: 41, section: 3, sectionTitle: "Management Functions", q: "Which function checks whether activities are going according to plan?", options: ["Leading", "Planning", "Controlling", "Negotiating"] },
+            { id: 42, section: 3, sectionTitle: "Management Functions", q: "Comparing actual performance with expected performance is part of?", options: ["Controlling", "Leading", "Planning", "Figurehead role"] },
+            { id: 43, section: 3, sectionTitle: "Management Functions", q: "A manager finds employees are not meeting targets and takes corrective action. This is?", options: ["Controlling", "Leading", "Liaison", "Remuneration"] },
+            { id: 44, section: 3, sectionTitle: "Management Functions", q: "Which function comes first when deciding organizational goals?", options: ["Planning", "Controlling", "Leading", "Negotiating"] },
+            { id: 45, section: 3, sectionTitle: "Management Functions", q: "Which function is most directly related to employee motivation?", options: ["Planning", "Leading", "Controlling", "Resource allocation"] },
+            { id: 46, section: 3, sectionTitle: "Management Functions", q: "Which function ensures that organizational activities follow plans?", options: ["Controlling", "Leading", "Figurehead", "Initiative"] },
+            { id: 47, section: 3, sectionTitle: "Management Functions", q: "Assigning tasks and arranging resources is commonly associated with?", options: ["Organizing", "Negotiating", "Monitoring", "Disturbance handling"] },
+            { id: 48, section: 3, sectionTitle: "Management Functions", q: "Which is the common sequence of management functions?", options: ["Leading, planning, controlling, organizing", "Planning, organizing, leading, controlling", "Controlling, leading, planning, organizing", "Organizing, controlling, planning, leading"] },
+            { id: 49, section: 3, sectionTitle: "Management Functions", q: "A manager prepares a plan for next year's sales. This is?", options: ["Leading", "Planning", "Controlling", "Negotiating"] },
+            { id: 50, section: 3, sectionTitle: "Management Functions", q: "A manager checks whether employees achieved monthly targets. This is?", options: ["Planning", "Leading", "Controlling", "Figurehead"] },
+            { id: 51, section: 3, sectionTitle: "Management Functions", q: "A manager encourages workers to work as a team. This is?", options: ["Leading", "Planning", "Controlling", "Centralization"] },
+            { id: 52, section: 3, sectionTitle: "Management Functions", q: "Which function focuses on arranging work and resources?", options: ["Organizing", "Leading", "Controlling", "Negotiating"] },
+            { id: 53, section: 3, sectionTitle: "Management Functions", q: "Which function helps determine what the organization wants to achieve?", options: ["Planning", "Controlling", "Leading", "Monitoring"] },
+            { id: 54, section: 3, sectionTitle: "Management Functions", q: "Corrective action is most closely associated with?", options: ["Controlling", "Planning", "Figurehead", "Liaison"] },
+            { id: 55, section: 3, sectionTitle: "Management Functions", q: "Which is NOT a common management function?", options: ["Planning", "Organizing", "Leading", "Avoiding responsibility"] },
+
+            // SECTION 4
+            { id: 56, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Which approach explains management through managerial roles?", options: ["Mintzberg's roles approach", "Scientific management", "Theory X", "Fayol's principles"] },
+            { id: 57, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "How many managerial roles are commonly identified by Mintzberg?", options: ["5", "8", "10", "14"] },
+            { id: 58, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Mintzberg grouped managerial roles into how many categories?", options: ["Two", "Three", "Four", "Five"] },
+            { id: 59, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Which are the three categories of Mintzberg's managerial roles?", options: ["Technical, human, conceptual", "Planning, leading, controlling", "Interpersonal, informational, decisional", "Efficiency, effectiveness, productivity"] },
+            { id: 60, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Interpersonal roles mainly involve?", options: ["People and relationships", "Financial calculations", "Machines", "Production targets"] },
+            { id: 61, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Informational roles mainly involve?", options: ["Collecting and sharing information", "Hiring only", "Making products", "Controlling machines"] },
+            { id: 62, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Decisional roles mainly involve?", options: ["Taking decisions and actions", "Sharing information only", "Attending ceremonies only", "Greeting visitors only"] },
+            { id: 63, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Which is an interpersonal role?", options: ["Monitor", "Negotiator", "Figurehead", "Resource allocator"] },
+            { id: 64, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Which role represents the organization in formal activities?", options: ["Figurehead", "Monitor", "Entrepreneur", "Negotiator"] },
+            { id: 65, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "A manager attends an official ceremony as the organization's representative. This is?", options: ["Figurehead", "Monitor", "Disturbance handler", "Resource allocator"] },
+            { id: 66, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Which role involves motivating and guiding employees?", options: ["Leader", "Spokesperson", "Monitor", "Negotiator"] },
+            { id: 67, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Which role involves maintaining relationships with people outside the manager's unit?", options: ["Liaison", "Entrepreneur", "Monitor", "Resource allocator"] },
+            { id: 68, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Which is an informational role?", options: ["Figurehead", "Leader", "Monitor", "Negotiator"] },
+            { id: 69, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "A manager collects information about changes in the business environment. This is?", options: ["Monitor", "Figurehead", "Leader", "Negotiator"] },
+            { id: 70, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Which role involves passing important information to employees?", options: ["Disseminator", "Figurehead", "Entrepreneur", "Disturbance handler"] },
+            { id: 71, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Which role involves communicating information to people outside the organization?", options: ["Spokesperson", "Monitor", "Leader", "Resource allocator"] },
+            { id: 72, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Which is a decisional role?", options: ["Figurehead", "Liaison", "Entrepreneur", "Monitor"] },
+            { id: 73, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "A manager starts a new project to improve the organization. This is?", options: ["Entrepreneur", "Figurehead", "Monitor", "Spokesperson"] },
+            { id: 74, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Which role involves handling unexpected problems and conflicts?", options: ["Disturbance handler", "Liaison", "Figurehead", "Monitor"] },
+            { id: 75, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "A manager decides how to distribute money, staff, and equipment. This is?", options: ["Resource allocator", "Spokesperson", "Figurehead", "Leader"] },
+            { id: 76, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Which role involves representing the organization in important agreements?", options: ["Negotiator", "Monitor", "Figurehead", "Disseminator"] },
+            { id: 77, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "A manager negotiates a contract with a supplier. This is?", options: ["Negotiator", "Leader", "Monitor", "Figurehead"] },
+            { id: 78, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Which group contains only interpersonal roles?", options: ["Figurehead, leader, liaison", "Monitor, disseminator, spokesperson", "Entrepreneur, negotiator, monitor", "Leader, monitor, entrepreneur"] },
+            { id: 79, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Which group contains only informational roles?", options: ["Figurehead, leader, liaison", "Monitor, disseminator, spokesperson", "Entrepreneur, negotiator, resource allocator", "Leader, liaison, negotiator"] },
+            { id: 80, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Which group contains only decisional roles?", options: ["Figurehead, leader, liaison", "Monitor, disseminator, spokesperson", "Entrepreneur, disturbance handler, resource allocator, negotiator", "Monitor, leader, figurehead, liaison"] },
+            { id: 81, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "How many interpersonal roles are there?", options: ["2", "3", "4", "5"] },
+            { id: 82, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "How many informational roles are there?", options: ["2", "3", "4", "5"] },
+            { id: 83, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "How many decisional roles are there?", options: ["2", "3", "4", "5"] },
+            { id: 84, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "Which memory combination is correct?", options: ["Interpersonal = people; informational = knowledge; decisional = action", "Interpersonal = money; informational = machines; decisional = people", "Interpersonal = action; informational = people; decisional = knowledge", "All mean the same"] },
+            { id: 85, section: 4, sectionTitle: "Mintzberg's Managerial Roles", q: "A manager deals with an unexpected crisis in the company. Which role is performed?", options: ["Figurehead", "Disturbance handler", "Monitor", "Disseminator"] },
+
+            // SECTION 5
+            { id: 86, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "An organization is?", options: ["A random group of people", "A deliberate arrangement of people to achieve a specific purpose", "A group without goals", "Only a building"] },
+            { id: 87, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "Which is a basic characteristic of an organization?", options: ["Purpose", "People", "Deliberate structure", "All of the above"] },
+            { id: 88, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "Why do organizations exist?", options: ["To achieve a specific purpose", "To avoid all work", "To create confusion", "To stop cooperation"] },
+            { id: 89, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "Which is NOT a basic organizational characteristic?", options: ["Purpose", "People", "Deliberate structure", "Randomness without purpose"] },
+            { id: 90, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "How many main managerial skills are discussed?", options: ["Two", "Three", "Four", "Five"] },
+            { id: 91, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "Which are the three managerial skills?", options: ["Technical, human, conceptual", "Planning, leading, controlling", "Interpersonal, informational, decisional", "Efficiency, effectiveness, productivity"] },
+            { id: 92, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "Technical skill means?", options: ["Knowledge and ability to perform specific tasks", "Ability to make friends only", "Understand whole organization only", "Negotiate contracts only"] },
+            { id: 93, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "Human skill means?", options: ["Working effectively with people", "Operating machines only", "Preparing financial statements only", "Designing buildings"] },
+            { id: 94, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "Conceptual skill means?", options: ["Understanding the organization as a whole", "Operating equipment", "Performing one technical task", "Greeting customers only"] },
+            { id: 95, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "Which skill is most closely related to understanding people?", options: ["Technical", "Human", "Conceptual", "Mechanical"] },
+            { id: 96, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "Which skill is most closely related to specialized job knowledge?", options: ["Technical", "Human", "Conceptual", "Physical"] },
+            { id: 97, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "Which skill helps managers understand how different parts of an organization work together?", options: ["Technical", "Human", "Conceptual", "Mechanical"] },
+            { id: 98, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "First-line managers generally need strong?", options: ["Technical skills", "Only conceptual skills", "No skills", "Only financial skills"] },
+            { id: 99, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "Human skills are important for?", options: ["Managers at all levels", "Only customers", "Only machines", "Only suppliers"] },
+            { id: 100, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "Conceptual skills are especially important for?", options: ["Top managers", "Only workers", "Only customers", "Only machine operators"] },
+            { id: 101, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "A manager knows how to operate specific production equipment. This is?", options: ["Human skill", "Technical skill", "Conceptual skill", "Negotiation role"] },
+            { id: 102, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "A manager listens to employees and resolves workplace concerns. This demonstrates?", options: ["Technical skill", "Human skill", "Conceptual skill", "Centralization"] },
+            { id: 103, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "A manager understands how a marketing decision affects finance and production. This demonstrates?", options: ["Technical skill", "Human skill", "Conceptual skill", "Discipline"] },
+            { id: 104, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "Which skill helps a manager communicate and cooperate with employees?", options: ["Human", "Technical", "Conceptual", "Mechanical"] },
+            { id: 105, section: 5, sectionTitle: "Organizations and Managerial Skills", q: "Which statement is correct about managerial skills?", options: ["All managers need only technical skills", "Managers need different combinations of technical, human, and conceptual skills", "Human skills are never needed", "Conceptual skills are useless"] },
+
+            // SECTION 6
+            { id: 106, section: 6, sectionTitle: "Changing Manager's Job & Importance", q: "Why are customers important to managers?", options: ["Customers are important to organizational success", "Customers have no effect", "Customers only create problems", "Managers should ignore customers"] },
+            { id: 107, section: 6, sectionTitle: "Changing Manager's Job & Importance", q: "Customer service mainly focuses on?", options: ["Meeting customer needs and providing service", "Avoiding customers", "Increasing confusion", "Ignoring complaints"] },
+            { id: 108, section: 6, sectionTitle: "Changing Manager's Job & Importance", q: "Innovation means?", options: ["Doing things differently and taking risks", "Repeating everything forever", "Avoiding new ideas", "Stopping improvement"] },
+            { id: 109, section: 6, sectionTitle: "Changing Manager's Job & Importance", q: "Which is an example of innovation?", options: ["Introducing a new way to serve customers", "Refusing to change", "Ignoring technology", "Repeating an unsuccessful method"] },
+            { id: 110, section: 6, sectionTitle: "Changing Manager's Job & Importance", q: "Which is a reason to study management?", options: ["Management is universal", "Management is irrelevant", "Organizations do not need managers", "Managers do not work with people"] },
+            { id: 111, section: 6, sectionTitle: "Changing Manager's Job & Importance", q: "Universality of management means?", options: ["Management is needed in different types of organizations", "Used only in factories", "Used only in schools", "Used only by governments"] },
+            { id: 112, section: 6, sectionTitle: "Changing Manager's Job & Importance", q: "Why is studying management useful for employees?", options: ["They may work with managers or become managers", "They never interact with managers", "They do not need organizational knowledge", "It prevents career development"] },
+            { id: 113, section: 6, sectionTitle: "Changing Manager's Job & Importance", q: "Which is one reason for studying management?", options: ["Reality of work", "Avoiding work", "Eliminating organizations", "Ignoring goals"] },
+            { id: 114, section: 6, sectionTitle: "Changing Manager's Job & Importance", q: "Management can provide which of the following?", options: ["Rewards and challenges", "Only punishment", "No responsibilities", "No opportunities"] },
+            { id: 115, section: 6, sectionTitle: "Changing Manager's Job & Importance", q: "Managers need to maintain good?", options: ["Customer relationships", "Customer avoidance", "Workplace confusion", "Unnecessary delays"] },
+            { id: 116, section: 6, sectionTitle: "Changing Manager's Job & Importance", q: "A business introduces a new product after identifying customer needs. This shows?", options: ["Innovation and customer focus", "Discipline only", "Scalar chain only", "Centralization only"] },
+            { id: 117, section: 6, sectionTitle: "Changing Manager's Job & Importance", q: "Which statement about management is correct?", options: ["Needed only in large companies", "Relevant in different organizations", "Not needed in small organizations", "Only about money"] },
+            { id: 118, section: 6, sectionTitle: "Changing Manager's Job & Importance", q: "Which factor makes the manager's job challenging?", options: ["Changing customer needs", "No organizational goals", "No employees", "No decisions"] },
+            { id: 119, section: 6, sectionTitle: "Changing Manager's Job & Importance", q: "Which activity helps build customer relationships?", options: ["Understanding and responding to customer needs", "Ignoring feedback", "Avoiding communication", "Refusing service"] },
+            { id: 120, section: 6, sectionTitle: "Changing Manager's Job & Importance", q: "The reality of work is a reason to study management because?", options: ["People may work in organizations and interact with managers", "People never work in organizations", "Management has no workplace role", "Managers do not coordinate work"] },
+
+            // SECTION 7
+            { id: 121, section: 7, sectionTitle: "Scientific Management - Taylor", q: "Who is associated with Principles of Scientific Management?", options: ["Henri Fayol", "Frederick Winslow Taylor", "Douglas McGregor", "Abraham Maslow"] },
+            { id: 122, section: 7, sectionTitle: "Scientific Management - Taylor", q: "Scientific management focuses on?", options: ["Improving work efficiency through scientific methods", "Avoiding measurement", "Working without methods", "Ignoring productivity"] },
+            { id: 123, section: 7, sectionTitle: "Scientific Management - Taylor", q: "Taylor suggested replacing rule of thumb with?", options: ["Guesswork", "Science", "Personal opinion only", "Random decisions"] },
+            { id: 124, section: 7, sectionTitle: "Scientific Management - Taylor", q: "Rule of thumb means?", options: ["Scientific measurement", "Traditional methods based on habit or experience", "Formal organizational structure", "Employee motivation"] },
+            { id: 125, section: 7, sectionTitle: "Scientific Management - Taylor", q: "Taylor's principle of harmony, not discord, emphasizes?", options: ["Conflict between workers and management", "Harmony between workers and management", "Avoiding cooperation", "Reducing communication"] },
+            { id: 126, section: 7, sectionTitle: "Scientific Management - Taylor", q: "Cooperation, not individualism, means?", options: ["Everyone works separately", "Workers and management cooperate", "Employees avoid teamwork", "Managers ignore workers"] },
+            { id: 127, section: 7, sectionTitle: "Scientific Management - Taylor", q: "Maximum output, not restricted output, means?", options: ["Producing less intentionally", "Increasing productivity and output", "Stopping production", "Avoiding targets"] },
+            { id: 128, section: 7, sectionTitle: "Scientific Management - Taylor", q: "Taylor believed employees should be developed to?", options: ["Their greatest efficiency", "Their lowest ability", "Avoid all responsibility", "Work without training"] },
+            { id: 129, section: 7, sectionTitle: "Scientific Management - Taylor", q: "How many main principles of scientific management are listed in the slides?", options: ["Three", "Four", "Five", "Fourteen"] },
+            { id: 130, section: 7, sectionTitle: "Scientific Management - Taylor", q: "Which is NOT one of Taylor's listed principles?", options: ["Replace rule of thumb with science", "Harmony, not discord", "Cooperation, not individualism", "Unity of command"] },
+            { id: 131, section: 7, sectionTitle: "Scientific Management - Taylor", q: "A factory studies the best method for completing a task instead of relying on guesses. This reflects?", options: ["Scientific management", "Theory X", "Theory Y", "Esprit de corps"] },
+            { id: 132, section: 7, sectionTitle: "Scientific Management - Taylor", q: "A company encourages teamwork between employees and managers. Which Taylor principle is shown?", options: ["Cooperation, not individualism", "Restricted output", "Discord", "Centralization"] },
+            { id: 133, section: 7, sectionTitle: "Scientific Management - Taylor", q: "Management and workers work together rather than fight. This represents?", options: ["Harmony, not discord", "Rule of thumb", "Individualism", "Instability"] },
+            { id: 134, section: 7, sectionTitle: "Scientific Management - Taylor", q: "A company trains employees to improve their performance. This reflects?", options: ["Develop each person to greatest efficiency", "Restricted output", "Avoiding cooperation", "Unity of direction"] },
+            { id: 135, section: 7, sectionTitle: "Scientific Management - Taylor", q: "Which principle opposes deliberately limiting production?", options: ["Maximum output, not restricted output", "Harmony, not discord", "Rule of thumb", "Discipline"] },
+            { id: 136, section: 7, sectionTitle: "Scientific Management - Taylor", q: "Scientific management is mainly concerned with?", options: ["Work methods and efficiency", "Only employee friendships", "Only ceremonies", "Only customer complaints"] },
+            { id: 137, section: 7, sectionTitle: "Scientific Management - Taylor", q: "Which approach replaces guesswork with systematic methods?", options: ["Scientific management", "Theory X", "Theory Y", "Behavioral theory only"] },
+            { id: 138, section: 7, sectionTitle: "Scientific Management - Taylor", q: "Taylor's approach emphasizes?", options: ["Scientific study of work", "Random work methods", "No employee development", "Restricted output"] },
+            { id: 139, section: 7, sectionTitle: "Scientific Management - Taylor", q: "Which statement best represents Taylor's thinking?", options: ["Work should be studied scientifically to improve efficiency", "Work should always be random", "Employees should never cooperate", "Output should always be restricted"] },
+            { id: 140, section: 7, sectionTitle: "Scientific Management - Taylor", q: "Which pair is correctly matched?", options: ["Taylor - Scientific management", "Fayol - Theory Y", "McGregor - Scalar chain", "Mintzberg - 14 principles"] },
+
+            // SECTION 8
+            { id: 141, section: 8, sectionTitle: "Management as Art and Science", q: "Management as an art is related to?", options: ["Creativity and practical skills", "Scientific formulas only", "Machines only", "Laws only"] },
+            { id: 142, section: 8, sectionTitle: "Management as Art and Science", q: "Art involves?", options: ["Creative skills and talent", "Only mathematical calculations", "No practice", "No personal judgment"] },
+            { id: 143, section: 8, sectionTitle: "Management as Art and Science", q: "In management as art, inborn talent can be improved through?", options: ["Learning and practice", "Avoiding experience", "Ignoring feedback", "Stopping education"] },
+            { id: 144, section: 8, sectionTitle: "Management as Art and Science", q: "Which is a characteristic of management as art?", options: ["Intelligence", "Initiative", "Innovative thinking", "All of the above"] },
+            { id: 145, section: 8, sectionTitle: "Management as Art and Science", q: "Individual approach is associated with?", options: ["Art", "Science only", "Centralization", "Scalar chain"] },
+            { id: 146, section: 8, sectionTitle: "Management as Art and Science", q: "Application and dedication are characteristics of?", options: ["Management as art", "Only organizational structure", "Only Theory X", "Only controlling"] },
+            { id: 147, section: 8, sectionTitle: "Management as Art and Science", q: "Result-oriented work is listed as a characteristic of?", options: ["Management as art", "Only Theory Y", "Only scalar chain", "Only division of work"] },
+            { id: 148, section: 8, sectionTitle: "Management as Art and Science", q: "Management as science is based on?", options: ["Experimentation and systematic knowledge", "Personal creativity only", "Guesswork", "Individual preference only"] },
+            { id: 149, section: 8, sectionTitle: "Management as Art and Science", q: "Which approach has a theoretical and systematized body of knowledge?", options: ["Science", "Art only", "Figurehead role", "Liaison role"] },
+            { id: 150, section: 8, sectionTitle: "Management as Art and Science", q: "Universal application is associated with?", options: ["Science", "Art only", "Individual approach only", "Personal talent only"] },
+            { id: 151, section: 8, sectionTitle: "Management as Art and Science", q: "Personalized application is associated with?", options: ["Art", "Science", "Scalar chain", "Unity of command"] },
+            { id: 152, section: 8, sectionTitle: "Management as Art and Science", q: "Which comparison is correct?", options: ["Art uses creativity; science uses experimentation", "Art uses experimentation only; science creativity only", "They are identical", "Neither involves knowledge"] },
+            { id: 153, section: 8, sectionTitle: "Management as Art and Science", q: "Management is considered both art and science because it involves?", options: ["Knowledge as well as practical application", "Only luck", "Only theory without practice", "Only creativity without knowledge"] },
+            { id: 154, section: 8, sectionTitle: "Management as Art and Science", q: "A manager uses personal creativity to solve a workplace problem. This demonstrates?", options: ["Management as art", "Management as science only", "Unity of command", "Centralization"] },
+            { id: 155, section: 8, sectionTitle: "Management as Art and Science", q: "A manager tests different methods and studies results systematically. This demonstrates?", options: ["Management as science", "Figurehead role", "Theory X", "Remuneration"] },
+
+            // SECTION 9
+            { id: 156, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Who introduced the 14 principles of management?", options: ["Frederick Taylor", "Henri Fayol", "Douglas McGregor", "Henry Mintzberg"] },
+            { id: 157, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "How many principles of management did Fayol introduce?", options: ["5", "10", "14", "20"] },
+            { id: 158, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Division of work means?", options: ["Dividing work into specialized tasks", "Giving everyone same task", "Avoiding specialization", "Removing responsibilities"] },
+            { id: 159, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "The main purpose of division of work is to improve?", options: ["Specialization and efficiency", "Confusion", "Conflict", "Waste"] },
+            { id: 160, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Authority means?", options: ["The right to give orders", "The duty to obey only", "Payment to employees", "Employee friendship"] },
+            { id: 161, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Responsibility means?", options: ["Duty to perform assigned work", "Right to ignore tasks", "Power without accountability", "Avoiding decisions"] },
+            { id: 162, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Fayol believed authority should be accompanied by?", options: ["Responsibility", "Confusion", "Individualism", "Instability"] },
+            { id: 163, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Discipline means?", options: ["Respecting rules and agreements", "Ignoring rules", "Avoiding responsibilities", "Refusing instructions"] },
+            { id: 164, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Unity of command means?", options: ["One employee should receive orders from one superior", "One employee gets orders from many bosses", "Everyone is a manager", "Employees receive no orders"] },
+            { id: 165, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "An employee receives conflicting instructions from two bosses. Which principle is violated?", options: ["Unity of command", "Unity of direction", "Equity", "Order"] },
+            { id: 166, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Unity of direction means?", options: ["One plan and one head for activities with same objective", "One employee and many bosses", "No organizational goals", "No planning"] },
+            { id: 167, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Which principle focuses on one plan for activities with the same objective?", options: ["Unity of direction", "Unity of command", "Remuneration", "Equity"] },
+            { id: 168, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Subordination of individual interest to general interest means?", options: ["Organizational interest should come before personal interest", "Personal interest always comes first", "Ignore organizational goals", "Avoid decisions"] },
+            { id: 169, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Remuneration refers to?", options: ["Payment or compensation for work", "Organizational structure", "Employee discipline", "Authority"] },
+            { id: 170, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Which principle concerns fair compensation to employees?", options: ["Remuneration", "Scalar chain", "Order", "Initiative"] },
+            { id: 171, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Centralization refers to?", options: ["Concentration of authority at higher levels", "Complete absence of authority", "Equal authority for every employee", "Eliminating managers"] },
+            { id: 172, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Scalar chain means?", options: ["Formal line of authority from top to bottom", "Employee salary system", "Division of tasks", "Customer service"] },
+            { id: 173, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Which principle represents the chain of command?", options: ["Scalar chain", "Equity", "Initiative", "Discipline"] },
+            { id: 174, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Order means?", options: ["The right person and material in the right place", "Everyone works without a place", "No resource arrangement", "Avoiding organization"] },
+            { id: 175, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Equity means?", options: ["Fairness and kindness in treatment", "Unequal treatment", "Ignoring employees", "Restricting salaries"] },
+            { id: 176, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Stability of tenure means?", options: ["Employees should have reasonable job stability", "Employees should leave every day", "Employees should never be trained", "Employees should not be hired"] },
+            { id: 177, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Which principle helps reduce unnecessary employee turnover?", options: ["Stability of tenure", "Unity of command", "Centralization", "Scalar chain"] },
+            { id: 178, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Initiative means?", options: ["Encouraging employees to suggest and carry out ideas", "Stopping employees from thinking", "Avoiding responsibility", "Ignoring new ideas"] },
+            { id: 179, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Esprit de corps means?", options: ["Team spirit and unity", "Individual conflict", "Strict centralization", "Employee turnover"] },
+            { id: 180, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Which principle encourages teamwork and unity among employees?", options: ["Esprit de corps", "Centralization", "Scalar chain", "Remuneration"] },
+            { id: 181, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "A worker specializes in one particular task. Which principle is applied?", options: ["Division of work", "Equity", "Order", "Initiative"] },
+            { id: 182, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "A manager treats employees fairly and kindly. Which principle is shown?", options: ["Equity", "Centralization", "Scalar chain", "Unity of command"] },
+            { id: 183, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "A manager allows employees to suggest new ideas. This shows?", options: ["Initiative", "Discipline", "Remuneration", "Centralization"] },
+            { id: 184, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "A company promotes team unity and cooperation. This shows?", options: ["Esprit de corps", "Scalar chain", "Division of work", "Authority"] },
+            { id: 185, section: 9, sectionTitle: "Fayol's 14 Principles of Management", q: "Which pair is correctly matched?", options: ["Unity of command - One employee, one superior", "Unity of direction - Fair payment", "Equity Chain of command", "Remuneration - Team spirit"] },
+
+            // SECTION 10
+            { id: 186, section: 10, sectionTitle: "Behavioral Theory, Theory X and Theory Y", q: "Behavioral theory mainly focuses on?", options: ["Human behavior in organizations", "Machines only", "Financial reports only", "Production equipment only"] },
+            { id: 187, section: 10, sectionTitle: "Behavioral Theory, Theory X and Theory Y", q: "Organizational behavior studies?", options: ["Human behavior in organizations", "Only company buildings", "Only product prices", "Only machines"] },
+            { id: 188, section: 10, sectionTitle: "Behavioral Theory, Theory X and Theory Y", q: "Human behavior in organizations is described as?", options: ["Simple and predictable in every situation", "Complex", "Unimportant", "Unrelated to management"] },
+            { id: 189, section: 10, sectionTitle: "Behavioral Theory, Theory X and Theory Y", q: "Organizational behavior draws knowledge from?", options: ["Psychology", "Sociology", "Anthropology", "All of the above"] },
+            { id: 190, section: 10, sectionTitle: "Behavioral Theory, Theory X and Theory Y", q: "Which subjects are also listed as contributors to organizational behavior?", options: ["Economics", "Medicine", "Both A and B", "Neither A nor B"] },
+            { id: 191, section: 10, sectionTitle: "Behavioral Theory, Theory X and Theory Y", q: "Who introduced Theory X and Theory Y?", options: ["Henri Fayol", "Frederick Taylor", "Douglas McGregor", "Henry Mintzberg"] },
+            { id: 192, section: 10, sectionTitle: "Behavioral Theory, Theory X and Theory Y", q: "Theory X assumes that employees generally?", options: ["Dislike work", "Always enjoy work", "Need no supervision", "Always accept responsibility"] },
+            { id: 193, section: 10, sectionTitle: "Behavioral Theory, Theory X and Theory Y", q: "According to Theory X, employees are generally assumed to lack?", options: ["Ambition", "Ability to follow instructions", "Physical strength", "Technical knowledge only"] },
+            { id: 194, section: 10, sectionTitle: "Behavioral Theory, Theory X and Theory Y", q: "Theory X assumes that employees may?", options: ["Resist change", "Always welcome change", "Always be creative", "Always be self-directed"] },
+            { id: 195, section: 10, sectionTitle: "Behavioral Theory, Theory X and Theory Y", q: "Theory Y assumes that employees are generally?", options: ["Unwilling to work", "Willing to work", "Always irresponsible", "Always against change"] },
+            { id: 196, section: 10, sectionTitle: "Behavioral Theory, Theory X and Theory Y", q: "According to Theory Y, employees can be?", options: ["Self-directed", "Self-controlled", "Creative", "All of the above"] },
+            { id: 197, section: 10, sectionTitle: "Behavioral Theory, Theory X and Theory Y", q: "Which theory assumes employees accept responsibility?", options: ["Theory X", "Theory Y", "Scientific management", "Scalar chain"] },
+            { id: 198, section: 10, sectionTitle: "Behavioral Theory, Theory X and Theory Y", q: "Which theory assumes employees dislike work and lack ambition?", options: ["Theory X", "Theory Y", "Behavioral theory only", "Fayol's theory"] },
+            { id: 199, section: 10, sectionTitle: "Behavioral Theory, Theory X and Theory Y", q: "A manager believes employees can take responsibility and use creativity. This manager follows?", options: ["Theory X", "Theory Y", "Scientific management only", "Unity of command"] },
+            { id: 200, section: 10, sectionTitle: "Behavioral Theory, Theory X and Theory Y", q: "Which comparison between Theory X and Theory Y is correct?", options: ["Theory X assumes employees dislike work; Theory Y assumes employees can be willing to work", "Both assume employees dislike work", "Theory X assumes creativity; Theory Y no responsibility", "Both have identical assumptions"] }
+        ];
+
+        // Attach verified correct letter & index to each item
+        questionsData.forEach(item => {
+            item.correctLetter = rawAnswers[item.id];
+            const letterMap = { 'A': 0, 'B': 1, 'C': 2, 'D': 3 };
+            item.correctIndex = letterMap[item.correctLetter];
+        });
+
+        // Application State Variables
+        let currentPool = [];
+        let currentIndex = 0;
+        let userAnswers = {}; // qId -> selectedIndex (0..3)
+        let bookmarkedQ = new Set();
+        let feedbackMode = 'immediate'; // 'immediate' or 'exam'
+
+        // DOM elements
+        const viewHome = document.getElementById('viewHome');
+        const viewQuiz = document.getElementById('viewQuiz');
+        const viewResults = document.getElementById('viewResults');
+
+        // Theme Toggle Functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.className = 'fa-solid fa-moon text-lg';
+            } else {
+                html.classList.add('dark');
+                icon.className = 'fa-solid fa-sun text-lg text-amber-400';
+            }
+        }
+
+        // Navigation Views Control
+        function goToHome() {
+            viewHome.classList.remove('hidden');
+            viewQuiz.classList.add('hidden');
+            viewResults.classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function startQuiz() {
+            const sectionVal = document.getElementById('sectionSelect').value;
+            const selectedRadio = document.querySelector('input[name="feedbackMode"]:checked');
+            feedbackMode = selectedRadio ? selectedRadio.value : 'immediate';
+
+            if (sectionVal === 'ALL') {
+                currentPool = [...questionsData];
+            } else {
+                const secNum = parseInt(sectionVal, 10);
+                currentPool = questionsData.filter(q => q.section === secNum);
+            }
+
+            currentIndex = 0;
+            userAnswers = {};
+            bookmarkedQ.clear();
+
+            viewHome.classList.add('hidden');
+            viewResults.classList.add('hidden');
+            viewQuiz.classList.remove('hidden');
+
+            renderQuestionGrid();
+            loadQuestion(0);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function loadQuestion(index) {
+            if (index < 0 || index >= currentPool.length) return;
+            currentIndex = index;
+
+            const q = currentPool[currentIndex];
+            
+            // Header stats
+            document.getElementById('quizCategoryBadge').innerText = `Section ${q.section}: ${q.sectionTitle}`;
+            document.getElementById('questionCounter').innerText = `Question ${currentIndex + 1} of ${currentPool.length}`;
+            document.getElementById('qNumberText').innerText = `Question #${q.id}`;
+            document.getElementById('qText').innerText = q.q;
+
+            // Progress bar
+            const pct = ((currentIndex + 1) / currentPool.length) * 100;
+            document.getElementById('progressBar').style.width = `${pct}%`;
+
+            // Current score count
+            updateScorePreview();
+
+            // Bookmark icon
+            const bBtn = document.getElementById('bookmarkBtn');
+            if (bookmarkedQ.has(q.id)) {
+                bBtn.className = "shrink-0 p-2.5 rounded-xl border border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-950/40 text-amber-500 transition";
+                bBtn.innerHTML = '<i class="fa-solid fa-bookmark text-lg"></i>';
+            } else {
+                bBtn.className = "shrink-0 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-400 hover:text-amber-500 hover:bg-slate-50 dark:hover:bg-slate-700 transition";
+                bBtn.innerHTML = '<i class="fa-regular fa-bookmark text-lg"></i>';
+            }
+
+            // Options rendering
+            const container = document.getElementById('optionsContainer');
+            container.innerHTML = '';
+
+            const selectedIdx = userAnswers[q.id];
+            const isAnswered = selectedIdx !== undefined;
+
+            const letters = ['A', 'B', 'C', 'D'];
+
+            q.options.forEach((optText, optIdx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between group cursor-pointer text-sm font-medium ";
+                
+                let optionStyle = "border-slate-200 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-900/40 text-slate-700 dark:text-slate-300 hover:border-brand-400 hover:bg-white dark:hover:bg-slate-800";
+                let badgeStyle = "bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300";
+
+                if (isAnswered) {
+                    if (feedbackMode === 'immediate') {
+                        if (optIdx === q.correctIndex) {
+                            optionStyle = "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-bold shadow-sm";
+                            badgeStyle = "bg-emerald-600 border-emerald-600 text-white";
+                        } else if (optIdx === selectedIdx) {
+                            optionStyle = "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200 font-bold";
+                            badgeStyle = "bg-rose-600 border-rose-600 text-white";
+                        } else {
+                            optionStyle = "border-slate-200 dark:border-slate-800 bg-slate-50/30 dark:bg-slate-900/20 text-slate-400 opacity-60";
+                        }
+                    } else {
+                        // Exam mode
+                        if (optIdx === selectedIdx) {
+                            optionStyle = "border-brand-500 bg-brand-50 dark:bg-brand-950/40 text-brand-900 dark:text-brand-200 font-bold shadow-sm";
+                            badgeStyle = "bg-brand-600 border-brand-600 text-white";
+                        }
+                    }
+                }
+
+                btn.className += optionStyle;
+
+                btn.onclick = () => selectOption(q.id, optIdx);
+
+                btn.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <span class="w-7 h-7 rounded-lg border text-xs font-extrabold flex items-center justify-center shrink-0 transition ${badgeStyle}">
+                            ${letters[optIdx]}
+                        </span>
+                        <span>${optText}</span>
+                    </div>
+                    ${(isAnswered && feedbackMode === 'immediate' && optIdx === q.correctIndex) ? '<i class="fa-solid fa-circle-check text-emerald-600 text-lg ml-2"></i>' : ''}
+                    ${(isAnswered && feedbackMode === 'immediate' && optIdx === selectedIdx && selectedIdx !== q.correctIndex) ? '<i class="fa-solid fa-circle-xmark text-rose-600 text-lg ml-2"></i>' : ''}
+                `;
+
+                container.appendChild(btn);
+            });
+
+            // Feedback alert for immediate mode
+            const alertBox = document.getElementById('feedbackAlert');
+            if (isAnswered && feedbackMode === 'immediate') {
+                alertBox.classList.remove('hidden');
+                if (selectedIdx === q.correctIndex) {
+                    alertBox.className = "p-4 rounded-xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-200 text-sm font-semibold flex items-center gap-2";
+                    alertBox.innerHTML = '<i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i> Correct Answer! Great job.';
+                } else {
+                    alertBox.className = "p-4 rounded-xl border border-rose-200 dark:border-rose-800 bg-rose-50 dark:bg-rose-950/50 text-rose-800 dark:text-rose-200 text-sm font-semibold flex items-start gap-2";
+                    alertBox.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-rose-600 text-lg mt-0.5"></i> <div>Incorrect. Correct Answer is Option <span class="font-bold uppercase">${letters[q.correctIndex]}</span>: "${q.options[q.correctIndex]}"</div>`;
+                }
+            } else {
+                alertBox.classList.add('hidden');
+            }
+
+            // Buttons enable/disable
+            document.getElementById('prevBtn').disabled = currentIndex === 0;
+
+            const isLast = currentIndex === currentPool.length - 1;
+            const nextBtn = document.getElementById('nextBtn');
+            if (isLast) {
+                nextBtn.classList.add('hidden');
+            } else {
+                nextBtn.classList.remove('hidden');
+            }
+
+            updateGridSelection();
+        }
+
+        function selectOption(qId, optIdx) {
+            userAnswers[qId] = optIdx;
+            loadQuestion(currentIndex);
+            renderQuestionGrid();
+        }
+
+        function prevQuestion() {
+            if (currentIndex > 0) loadQuestion(currentIndex - 1);
+        }
+
+        function nextQuestion() {
+            if (currentIndex < currentPool.length - 1) loadQuestion(currentIndex + 1);
+        }
+
+        function toggleBookmark() {
+            const q = currentPool[currentIndex];
+            if (bookmarkedQ.has(q.id)) {
+                bookmarkedQ.delete(q.id);
+            } else {
+                bookmarkedQ.add(q.id);
+            }
+            loadQuestion(currentIndex);
+            renderQuestionGrid();
+        }
+
+        function updateScorePreview() {
+            let correctCount = 0;
+            currentPool.forEach(q => {
+                if (userAnswers[q.id] !== undefined && userAnswers[q.id] === q.correctIndex) {
+                    correctCount++;
+                }
+            });
+            document.getElementById('currentScorePreview').innerText = correctCount;
+        }
+
+        // Render Sidebar/Drawer Question Grid
+        function renderQuestionGrid() {
+            const grid = document.getElementById('questionGrid');
+            grid.innerHTML = '';
+
+            let answeredCount = 0;
+
+            currentPool.forEach((q, idx) => {
+                const isAns = userAnswers[q.id] !== undefined;
+                const isFlag = bookmarkedQ.has(q.id);
+                if (isAns) answeredCount++;
+
+                const btn = document.createElement('button');
+                btn.onclick = () => loadQuestion(idx);
+
+                let cls = "w-full aspect-square rounded-lg text-xs font-bold transition flex items-center justify-center relative border ";
+                
+                if (idx === currentIndex) {
+                    cls += "ring-2 ring-brand-500 ring-offset-1 dark:ring-offset-slate-800 ";
+                }
+
+                if (isFlag) {
+                    cls += "bg-amber-100 dark:bg-amber-900/60 border-amber-400 text-amber-800 dark:text-amber-200 ";
+                } else if (isAns) {
+                    cls += "bg-brand-600 border-brand-600 text-white ";
+                } else {
+                    cls += "bg-slate-100 dark:bg-slate-700/60 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 ";
+                }
+
+                btn.className = cls;
+                btn.innerText = idx + 1;
+
+                if (isFlag) {
+                    const dot = document.createElement('span');
+                    dot.className = "absolute -top-1 -right-1 w-2.5 h-2.5 bg-amber-500 rounded-full border border-white dark:border-slate-800";
+                    btn.appendChild(dot);
+                }
+
+                grid.appendChild(btn);
+            });
+
+            document.getElementById('navSummaryText').innerText = `${answeredCount}/${currentPool.length}`;
+        }
+
+        function updateGridSelection() {
+            const grid = document.getElementById('questionGrid');
+            const buttons = grid.children;
+            for (let i = 0; i < buttons.length; i++) {
+                if (i === currentIndex) {
+                    buttons[i].classList.add('ring-2', 'ring-brand-500', 'ring-offset-1');
+                } else {
+                    buttons[i].classList.remove('ring-2', 'ring-brand-500', 'ring-offset-1');
+                }
+            }
+        }
+
+        function toggleNavigator() {
+            const nav = document.getElementById('navigatorContainer');
+            nav.classList.toggle('hidden');
+        }
+
+        // Submit Quiz & Show Analytics
+        function confirmSubmitQuiz() {
+            const answeredCount = Object.keys(userAnswers).length;
+            const total = currentPool.length;
+            const remaining = total - answeredCount;
+
+            let msg = `You have completed ${answeredCount} of ${total} questions.`;
+            if (remaining > 0) {
+                msg += ` You still have ${remaining} unanswered questions.`;
+            }
+            msg += ` Are you sure you want to finish?`;
+
+            if (confirm(msg)) {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            let correct = 0;
+            let incorrect = 0;
+            let skipped = 0;
+
+            currentPool.forEach(q => {
+                const userChoice = userAnswers[q.id];
+                if (userChoice === undefined) {
+                    skipped++;
+                } else if (userChoice === q.correctIndex) {
+                    correct++;
+                } else {
+                    incorrect++;
+                }
+            });
+
+            const total = currentPool.length;
+            const percentage = ((correct / total) * 100).toFixed(1);
+
+            // Populate DOM
+            document.getElementById('resPercentage').innerText = `${percentage}%`;
+            document.getElementById('resScoreText').innerText = `You scored ${correct} out of ${total} questions`;
+            document.getElementById('resTotal').innerText = total;
+            document.getElementById('resCorrect').innerText = correct;
+            document.getElementById('resIncorrect').innerText = incorrect;
+            document.getElementById('resSkipped').innerText = skipped;
+
+            // Rating logic
+            const ratingEl = document.getElementById('resPerformanceRating');
+            if (percentage >= 90) {
+                ratingEl.innerText = "🌟 Excellent! Master Level Knowledge!";
+                ratingEl.className = "text-base font-bold text-emerald-600 dark:text-emerald-400 pt-1";
+            } else if (percentage >= 75) {
+                ratingEl.innerText = "👍 Great Job! Strong Understanding.";
+                ratingEl.className = "text-base font-bold text-brand-600 dark:text-brand-400 pt-1";
+            } else if (percentage >= 50) {
+                ratingEl.innerText = "📚 Good effort! Keep practicing to improve.";
+                ratingEl.className = "text-base font-bold text-amber-600 dark:text-amber-400 pt-1";
+            } else {
+                ratingEl.innerText = "💪 Needs Improvement. Review key concepts and try again.";
+                ratingEl.className = "text-base font-bold text-rose-600 dark:text-rose-400 pt-1";
+            }
+
+            // Build Review list
+            renderReviewList('all');
+
+            viewQuiz.classList.add('hidden');
+            viewResults.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderReviewList(filter) {
+            const container = document.getElementById('reviewContainer');
+            container.innerHTML = '';
+
+            const letters = ['A', 'B', 'C', 'D'];
+
+            currentPool.forEach((q, idx) => {
+                const userChoice = userAnswers[q.id];
+                const isCorrect = userChoice !== undefined && userChoice === q.correctIndex;
+                const isSkipped = userChoice === undefined;
+
+                if (filter === 'correct' && !isCorrect) return;
+                if (filter === 'incorrect' && (isCorrect || isSkipped)) return;
+                if (filter === 'skipped' && !isSkipped) return;
+
+                const card = document.createElement('div');
+                let cardBorder = "border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/40";
+                let statusBadge = `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-300">Skipped</span>`;
+
+                if (!isSkipped) {
+                    if (isCorrect) {
+                        cardBorder = "border-emerald-200 dark:border-emerald-800/60 bg-emerald-50/30 dark:bg-emerald-950/20";
+                        statusBadge = `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300"><i class="fa-solid fa-check"></i> Correct</span>`;
+                    } else {
+                        cardBorder = "border-rose-200 dark:border-rose-800/60 bg-rose-50/30 dark:bg-rose-950/20";
+                        statusBadge = `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-rose-100 text-rose-700 dark:bg-rose-900/50 dark:text-rose-300"><i class="fa-solid fa-xmark"></i> Incorrect</span>`;
+                    }
+                }
+
+                card.className = `p-4 sm:p-5 rounded-xl border ${cardBorder} space-y-3`;
+
+                card.innerHTML = `
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="space-y-1">
+                            <span class="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase">Q${q.id} • Section ${q.section}</span>
+                            <h4 class="font-bold text-slate-900 dark:text-white text-sm sm:text-base">${q.q}</h4>
+                        </div>
+                        <div>${statusBadge}</div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-medium pt-1">
+                        <div class="p-2.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                            <span class="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-bold">Your Choice:</span>
+                            <span class="${isSkipped ? 'text-amber-600 font-bold' : (isCorrect ? 'text-emerald-600 font-bold' : 'text-rose-600 font-bold')}">
+                                ${isSkipped ? 'No answer given' : `${letters[userChoice]}: ${q.options[userChoice]}`}
+                            </span>
+                        </div>
+                        <div class="p-2.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                            <span class="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-bold">Official Correct Answer:</span>
+                            <span class="text-emerald-600 dark:text-emerald-400 font-bold">
+                                ${letters[q.correctIndex]}: ${q.options[q.correctIndex]}
+                            </span>
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+            if (container.children.length === 0) {
+                container.innerHTML = `<div class="text-center py-8 text-slate-400 text-sm">No items found matching this filter.</div>`;
+            }
+        }
+
+        function filterReviewList() {
+            const val = document.getElementById('reviewFilter').value;
+            renderReviewList(val);
+        }
+
+        function retakeCurrentQuiz() {
+            userAnswers = {};
+            bookmarkedQ.clear();
+            currentIndex = 0;
+            viewResults.classList.add('hidden');
+            viewQuiz.classList.remove('hidden');
+            renderQuestionGrid();
+            loadQuestion(0);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
